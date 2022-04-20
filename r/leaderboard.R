@@ -6,8 +6,8 @@ library(jsonlite)
 library(glue)
 
 LOCATION_ID <- "UML"
-START_DATE <- "2020-04-24"
-END_DATE <- "2020-07-01"
+START_DATE <- "2021-04-15"
+END_DATE <- "2021-07-01"
 
 cfg <- read_json("./config.json")
 
@@ -47,6 +47,12 @@ df <- df_email %>%
   rename(videos_counts = n_count, fish_counted = sum_count)
 
 head(df, 10)
+
+df %>%
+  filter(videos_counts > 0) %>%
+  ggplot(aes(videos_counts)) +
+  geom_histogram() +
+  scale_x_log10()
 
 # export ------------------------------------------------------------------
 
