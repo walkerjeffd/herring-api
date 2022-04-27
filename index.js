@@ -163,7 +163,7 @@ app.delete('/users/:uid', (req, res, next) => {
 })
 
 app.put('/users/:uid', (req, res, next) => {
-  db.updateUser({ uid: req.params.uid, username: req.body.username })
+  db.updateUser({ uid: req.params.uid, ...req.body })
     .then(result => res.status(200).json({ status: 'ok', data: result }))
     .catch(next)
 })
