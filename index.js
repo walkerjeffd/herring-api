@@ -131,7 +131,7 @@ app.get('/users/', (req, res, next) => {
 
   const defaultQuery = {
     location_id: locationId,
-    ...utils.getSiteParams(locationId).status
+    ...utils.getSiteParams(locationId).leaderboard
   }
 
   const query = Object.assign(defaultQuery, req.query)
@@ -147,7 +147,7 @@ app.get('/users/:uid', (req, res, next) => {
   const defaultQuery = {
     location_id: locationId,
     uid: req.params.uid,
-    ...utils.getSiteParams(locationId).status
+    ...utils.getSiteParams(locationId).leaderboard
   }
   const query = Object.assign(defaultQuery, req.query)
 

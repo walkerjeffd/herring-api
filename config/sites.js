@@ -46,8 +46,8 @@ module.exports = {
       min_count_mean: 0
     },
     sampler: {
-      //distribution: 'exponential',
-      //lambda: 0.0005
+      // distribution: 'exponential',
+      // lambda: 0.0005
       distribution: 'uniform'
     },
     status: {
@@ -57,12 +57,16 @@ module.exports = {
     run: {
       start_date: '2021-04-29',
       end_date: '2021-06-15'
+    },
+    leaderboard: {
+      start_date: '2022-01-01',
+      end_date: '2022-12-31'
     }
   },
   PLY: {
     window: {
-      start_date: '2022-04-19',
-      end_date: '2022-07-01',
+      start_date: '2021-04-17',
+      end_date: '2021-05-21',
       method: 'fixed'
     },
     sampler: {
@@ -76,12 +80,12 @@ module.exports = {
       min_count_mean: 0
     },
     status: {
-      start_date: '2022-04-19',
-      end_date: '2022-07-01'
+      start_date: '2021-04-17',
+      end_date: '2021-05-21'
     },
     run: {
-      start_date: '2022-04-19',
-      end_date: '2022-07-01'
+      start_date: '2021-04-17',
+      end_date: '2021-05-21'
     }
   },
   NSRWA: {
