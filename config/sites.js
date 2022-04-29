@@ -32,8 +32,8 @@ module.exports = {
   },
   UML: {
     window: {
-      start_date: '2021-04-29',
-      end_date: '2021-06-15',
+      start_date: '2022-04-27',
+      end_date: '2022-06-15',
       method: 'fixed'
     },
     times: {
@@ -51,12 +51,12 @@ module.exports = {
       distribution: 'uniform'
     },
     status: {
-      start_date: '2021-04-29',
-      end_date: '2021-06-15'
+      start_date: '2022-04-27',
+      end_date: '2022-06-15'
     },
     run: {
-      start_date: '2021-04-29',
-      end_date: '2021-06-15'
+      start_date: '2022-04-27',
+      end_date: '2022-06-15'
     },
     leaderboard: {
       start_date: '2022-01-01',
