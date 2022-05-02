@@ -32,7 +32,7 @@ module.exports = {
   },
   UML: {
     window: {
-      start_date: '2022-04-27',
+      start_date: '2022-04-24',
       end_date: '2022-06-15',
       method: 'fixed'
     },
@@ -51,11 +51,11 @@ module.exports = {
       distribution: 'uniform'
     },
     status: {
-      start_date: '2022-04-27',
+      start_date: '2022-04-24',
       end_date: '2022-06-15'
     },
     run: {
-      start_date: '2022-04-27',
+      start_date: '2022-04-24',
       end_date: '2022-06-15'
     },
     leaderboard: {
