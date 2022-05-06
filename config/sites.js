@@ -1,8 +1,8 @@
 module.exports = {
   default: {
     window: {
-      start_date: '2021-04-01',
-      end_date: '2021-07-01',
+      start_date: '2022-04-01',
+      end_date: '2022-07-01',
       method: 'fixed'
     },
     times: {
@@ -18,16 +18,16 @@ module.exports = {
       distribution: 'uniform'
     },
     status: {
-      start_date: '2021-04-01',
-      end_date: '2021-07-01'
+      start_date: '2022-04-01',
+      end_date: '2022-07-01'
     },
     allVideos: {
-      start_date: '2021-04-01',
-      end_date: '2021-07-01'
+      start_date: '2022-04-01',
+      end_date: '2022-07-01'
     },
     run: {
-      start_date: '2021-04-01',
-      end_date: '2021-07-01'
+      start_date: '2022-04-01',
+      end_date: '2022-07-01'
     }
   },
   UML: {
@@ -42,7 +42,7 @@ module.exports = {
     },
     counts: {
       min_count_n: 0,
-      max_count_n: 2,
+      max_count_n: 5,
       min_count_mean: 0
     },
     sampler: {
