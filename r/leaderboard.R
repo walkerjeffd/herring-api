@@ -6,8 +6,8 @@ library(jsonlite)
 library(glue)
 
 LOCATION_ID <- "UML"
-START_DATE <- "2021-04-15"
-END_DATE <- "2021-07-01"
+START_DATE <- "2022-04-01"
+END_DATE <- "2022-07-01"
 
 cfg <- read_json("./config.json")
 
@@ -34,7 +34,17 @@ con <- DBI::dbConnect(
   password = cfg$db$password
 )
 
-df_stats <- DBI::dbGetQuery(con, "SELECT * FROM f_users_stats($1, $2, $3)", params = list(LOCATION_ID, START_DATE, END_DATE))
+df_stats <- DBI::dbGetQuery(
+  con,
+  "
+    with t as (
+      select * from f_users_stats($1, $2, $3)
+    )
+    select t.*,
+      u.first_name, u.last_name, u.zip, u.allow_email
+    from t left join users u on t.uid=u.uid",
+  params = list(LOCATION_ID, START_DATE, END_DATE)
+)
 
 DBI::dbDisconnect(con)
 
@@ -44,7 +54,8 @@ DBI::dbDisconnect(con)
 df <- df_email %>%
   full_join(df_stats, by = "uid") %>%
   arrange(desc(n_count)) %>%
-  rename(videos_counts = n_count, fish_counted = sum_count)
+  rename(videos_counts = n_count, fish_counted = sum_count) %>%
+  filter(!is.na(username))
 
 head(df, 10)
 
@@ -57,5 +68,5 @@ df %>%
 # export ------------------------------------------------------------------
 
 df %>%
-  write_csv("csv/leaderboard.csv")
+  write_csv("csv/leaderboard.csv", na = "")
 
