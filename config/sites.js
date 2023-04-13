@@ -46,8 +46,8 @@ module.exports = {
       min_count_mean: 0
     },
     sampler: {
-      // distribution: 'exponential',
-      // lambda: 0.0005
+      //distribution: 'exponential',
+      //lambda: 0.0005
       distribution: 'uniform'
     },
     status: {
@@ -65,14 +65,18 @@ module.exports = {
   },
   PLY: {
     window: {
-      start_date: '2022-04-19',
-      end_date: '2022-07-01',
+      start_date: '2023-04-12',
+      end_date: '2023-07-01',
       method: 'fixed'
+    },
+    times: {
+      start_hour: 0,
+      end_hour: 24
     },
     sampler: {
       distribution: 'uniform'
-      // distribution: 'exponential',
-      // lambda: 0.0005
+      //distribution: 'exponential',
+      //lambda: 0.0005
     },
     counts: {
       min_count_n: 0,
@@ -80,18 +84,18 @@ module.exports = {
       min_count_mean: 0
     },
     status: {
-      start_date: '2022-04-19',
-      end_date: '2022-07-01'
+      start_date: '2023-04-12',
+      end_date: '2023-07-01'
     },
     run: {
-      start_date: '2022-04-19',
-      end_date: '2022-07-01'
+      start_date: '2023-04-12',
+      end_date: '2023-07-01'
     }
   },
   NSRWA: {
     window: {
-      start_date: '2022-04-01',
-      end_date: '2022-07-01',
+      start_date: '2022-04-25',
+      end_date: '2022-05-23',
       method: 'fixed'
     },
     sampler: {
@@ -103,12 +107,12 @@ module.exports = {
       min_count_mean: 0
     },
     status: {
-      start_date: '2022-04-15',
-      end_date: '2022-07-01'
+      start_date: '2022-04-25',
+      end_date: '2022-05-23'
     },
     run: {
-      start_date: '2022-04-15',
-      end_date: '2022-07-01'
+      start_date: '2022-04-25',
+      end_date: '2022-05-23'
     }
   }
 }
