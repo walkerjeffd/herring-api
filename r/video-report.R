@@ -23,7 +23,7 @@ pg <- src_postgres(
   password = cfg$db$password
 )
 
-generate_report <- function(site, start_date, end_date) {
+generate_report <- function(site, start_date, end_date, fullDay) {
   fname <- glue("pdf/video-{year(start_date)}-{site}.pdf")
   cat(glue("generating report: {fname}"), "\n")
 
@@ -140,27 +140,48 @@ generate_report <- function(site, start_date, end_date) {
       date < as.Date(now(), tz = "US/Eastern") | hour < hour(now(tzone = "US/Eastern"))
     )
 
-  run_counts <- videos %>%
-    filter(
-      date >= ymd(start_date),
-      date <= ymd(end_date),
-      hour(start_timestamp) < 21,
-      hour(end_timestamp) >= 5
-      # !(hour(start) != hour(end) & hour(end) %in% c(7, 11, 15, 19) & minute(end) > 0)
-    ) %>%
-    mutate(
-      hour = hour(start_timestamp),
-      period = case_when(
-        hour >= 5 & hour < 7 ~ 0,
-        hour >= 7 & hour < 11 ~ 1,
-        hour >= 11 & hour < 15 ~ 2,
-        hour >= 15 & hour < 19 ~ 3,
-        hour >= 19 & hour < 21 ~ 4,
-        TRUE ~ NA_real_
-      )
-    ) %>%
-    filter(!is.na(period)) %>%
-    select(date, video_id = id, start = start_timestamp, end = end_timestamp, hour, period, duration, n_count, mean_count)
+  if (fullDay) {
+    run_counts <- videos %>%
+      filter(
+        date >= ymd(start_date),
+        date <= ymd(end_date),
+        # !(hour(start) != hour(end) & hour(end) %in% c(7, 11, 15, 19) & minute(end) > 0)
+      ) %>%
+      mutate(
+        hour = hour(start_timestamp),
+        period = case_when(
+          hour >= 0 & hour < 4 ~ 1,
+          hour >= 4 & hour < 7 ~ 2,
+          hour >= 7 & hour < 11 ~ 3,
+          hour >= 11 & hour < 15 ~ 4,
+          hour >= 15 & hour < 19 ~ 5,
+          hour >= 19 ~ 6,
+          TRUE ~ NA_real_
+        )
+      ) %>%
+      filter(!is.na(period)) %>%
+      select(date, video_id = id, start = start_timestamp, end = end_timestamp, hour, period, duration, n_count, mean_count)
+  } else {
+    run_counts <- videos %>%
+      filter(
+        date >= ymd(start_date),
+        date <= ymd(end_date),
+        hour(start_timestamp) < 21,
+        hour(end_timestamp) >= 5
+        # !(hour(start) != hour(end) & hour(end) %in% c(7, 11, 15, 19) & minute(end) > 0)
+      ) %>%
+      mutate(
+        hour = hour(start_timestamp),
+        period = case_when(
+          hour >= 7 & hour < 11 ~ 1,
+          hour >= 11 & hour < 15 ~ 2,
+          hour >= 15 & hour < 19 ~ 3,
+          TRUE ~ NA_real_
+        )
+      ) %>%
+      filter(!is.na(period)) %>%
+      select(date, video_id = id, start = start_timestamp, end = end_timestamp, hour, period, duration, n_count, mean_count)
+  }
 
   run_hour <- run_counts %>%
     select(
@@ -193,7 +214,6 @@ generate_report <- function(site, start_date, end_date) {
     )
 
   run_period <- run_counts %>%
-    filter(period %in% c(1:3)) %>%
     select(
       date,
       period,
@@ -214,7 +234,7 @@ generate_report <- function(site, start_date, end_date) {
       mean_t = coalesce(sum_t / n, 0),
       r = coalesce(sum_y / sum_t, 0),
       Y = r * T,
-      se2 = coalesce(sum((y_i - r * t_i_counted) ^ 2, na.rm = TRUE) / (n - 1), 0),
+      se2 = if_else(n > 1, coalesce(sum((y_i - r * t_i_counted) ^ 2, na.rm = TRUE) / (n - 1), 0), 0),
       var_Y = coalesce((T / mean_t)^2 * (N - n) / (N * n) * se2, 0),
       df = n - 1,
       t_star = coalesce(qt(0.975, df = df), 0),
@@ -261,7 +281,6 @@ generate_report <- function(site, start_date, end_date) {
       ci_lower = Y - t_star * sqrt(var_Y),
       ci_upper = Y + t_star * sqrt(var_Y)
     )
-
 
   run_day_cumul <- run_day %>%
     mutate(
@@ -394,7 +413,8 @@ generate_report <- function(site, start_date, end_date) {
     labs(
       x = "Date",
       y = "Cumul. Est. # Fish",
-      title = "Cumulative Est. Total Fish (95% CI)"
+      title = "Cumulative Est. Total Fish (95% CI)",
+      subtitle = if_else(fullDay, "Full Day Estimate (24 hr)", "Daytime Estimate (7AM - 7PM)")
     )
 
   p3 <- run_hour %>%
@@ -679,9 +699,14 @@ generate_report <- function(site, start_date, end_date) {
 
 
 
-map(cfg$reports, ~ generate_report(.$site, .$start, .$end))
+map(cfg$reports, ~ generate_report(.$site, .$start, .$end, .$fullDay))
 
-
+# generate_report("PLY", "2023-04-12", "2023-07-01", TRUE)
+#
+# site="PLY"
+# start_date="2023-04-12"
+# end_date="2023-07-01"
+# fullDay=TRUE
 
 # # load volunteer counts ---------------------------------------------------
 #
