@@ -89,7 +89,8 @@ module.exports = {
     },
     run: {
       start_date: '2023-04-12',
-      end_date: '2023-07-01'
+      end_date: '2023-07-01',
+      fullDay: true
     }
   },
   NSRWA: {
