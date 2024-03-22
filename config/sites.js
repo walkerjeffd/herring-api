@@ -52,11 +52,11 @@ module.exports = {
     },
     status: {
       start_date: '2023-05-06',
-      end_date: '2023-07-01'
+      end_date: '2023-06-19'
     },
     run: {
-      start_date: '2023-05-01',
-      end_date: '2023-07-01'
+      start_date: '2023-05-06',
+      end_date: '2023-07-19'
     },
     leaderboard: {
       start_date: '2023-01-01',
@@ -65,8 +65,8 @@ module.exports = {
   },
   PLY: {
     window: {
-      start_date: '2023-04-12',
-      end_date: '2023-05-19',
+      start_date: '2024-03-20',
+      end_date: '2024-06-01',
       method: 'fixed'
     },
     times: {
@@ -84,12 +84,12 @@ module.exports = {
       min_count_mean: 0
     },
     status: {
-      start_date: '2023-04-12',
-      end_date: '2023-05-19'
+      start_date: '2024-03-20',
+      end_date: '2024-06-01'
     },
     run: {
-      start_date: '2023-04-12',
-      end_date: '2023-05-19',
+      start_date: '2024-03-20',
+      end_date: '2024-06-01',
       fullDay: true
     }
   },
