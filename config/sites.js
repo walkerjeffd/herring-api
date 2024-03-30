@@ -65,8 +65,8 @@ module.exports = {
   },
   PLY: {
     window: {
-      start_date: '2024-03-20',
-      end_date: '2024-06-01',
+      start_date: '2024-03-29',
+      end_date: '2024-07-01',
       method: 'fixed'
     },
     times: {
@@ -84,12 +84,12 @@ module.exports = {
       min_count_mean: 0
     },
     status: {
-      start_date: '2024-03-20',
-      end_date: '2024-06-01'
+      start_date: '2024-03-29',
+      end_date: '2024-07-01'
     },
     run: {
-      start_date: '2024-03-20',
-      end_date: '2024-06-01',
+      start_date: '2024-03-29',
+      end_date: '2024-07-01',
       fullDay: true
     }
   },
@@ -114,6 +114,39 @@ module.exports = {
     run: {
       start_date: '2022-04-25',
       end_date: '2022-05-23'
+    }
+  },
+  PEN: {
+    window: {
+      start_date: '2023-05-08',
+      end_date: '2023-06-20',
+      method: 'fixed'
+    },
+    times: {
+      start_hour: 7,
+      end_hour: 18
+    },
+    counts: {
+      min_count_n: 0,
+      max_count_n: 2,
+      min_count_mean: 0
+    },
+    sampler: {
+      //distribution: 'exponential',
+      //lambda: 0.0005
+      distribution: 'uniform'
+    },
+    status: {
+      start_date: '2023-05-08',
+      end_date: '2023-06-20'
+    },
+    run: {
+      start_date: '2023-05-08',
+      end_date: '2023-07-20'
+    },
+    leaderboard: {
+      start_date: '2023-01-01',
+      end_date: '2023-12-31'
     }
   }
 }
