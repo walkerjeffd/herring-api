@@ -32,8 +32,8 @@ module.exports = {
   },
   UML: {
     window: {
-      start_date: '2023-04-01',
-      end_date: '2023-07-01',
+      start_date: '2024-04-01',
+      end_date: '2024-07-01',
       method: 'fixed'
     },
     times: {
@@ -51,16 +51,16 @@ module.exports = {
       distribution: 'uniform'
     },
     status: {
-      start_date: '2023-05-06',
-      end_date: '2023-06-19'
+      start_date: '2024-04-23',
+      end_date: '2024-07-01'
     },
     run: {
-      start_date: '2023-05-06',
-      end_date: '2023-07-19'
+      start_date: '2024-04-23',
+      end_date: '2024-07-01'
     },
     leaderboard: {
-      start_date: '2023-01-01',
-      end_date: '2023-12-31'
+      start_date: '2024-01-01',
+      end_date: '2024-12-31'
     }
   },
   PLY: {
@@ -80,7 +80,7 @@ module.exports = {
     },
     counts: {
       min_count_n: 0,
-      max_count_n: 2,
+      max_count_n: 1000,
       min_count_mean: 0
     },
     status: {

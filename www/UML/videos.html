@@ -42,7 +42,7 @@ var player = videojs('video', {
 });
 
 $.ajax({
-  url: 'https://myrwa-api.org/api/herring/videos/?location_id=UML&start_date=2023-04-01&end_date=2023-08-01',
+  url: 'https://myrwa-api.org/api/herring/videos/?location_id=UML&start_date=2024-04-01&end_date=2024-08-01',
   success: function (response) {
     response.data.forEach(function (d) {
       d.start_timestamp = new Date(d.start_timestamp);
