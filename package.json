@@ -12,7 +12,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
-    "d3": "^4.9.1",
+    "d3": "^7.6.1",
     "express": "^4.15.2",
     "google-spreadsheet": "^2.0.3",
     "jsonfile": "^4.0.0",
