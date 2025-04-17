@@ -6,8 +6,8 @@ library(jsonlite)
 library(glue)
 
 LOCATION_ID <- "UML"
-START_DATE <- "2022-04-01"
-END_DATE <- "2022-07-01"
+START_DATE <- "2024-04-01"
+END_DATE <- "2024-07-01"
 
 cfg <- read_json("./config.json")
 
