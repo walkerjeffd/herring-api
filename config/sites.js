@@ -32,8 +32,8 @@ module.exports = {
   },
   UML: {
     window: {
-      start_date: '2024-04-01',
-      end_date: '2024-07-01',
+      start_date: '2025-04-01',
+      end_date: '2025-07-01',
       method: 'fixed'
     },
     times: {
@@ -46,21 +46,21 @@ module.exports = {
       min_count_mean: 0
     },
     sampler: {
-      //distribution: 'exponential',
-      //lambda: 0.0005
-      distribution: 'uniform'
+      distribution: 'exponential',
+      lambda: 0.0005
+      // distribution: 'uniform'
     },
     status: {
-      start_date: '2024-04-23',
-      end_date: '2024-07-01'
+      start_date: '2025-04-30',
+      end_date: '2025-07-01'
     },
     run: {
-      start_date: '2024-04-23',
-      end_date: '2024-07-01'
+      start_date: '2025-04-30',
+      end_date: '2025-07-01'
     },
     leaderboard: {
-      start_date: '2024-01-01',
-      end_date: '2024-12-31'
+      start_date: '2025-01-01',
+      end_date: '2025-12-31'
     }
   },
   PLY: {
