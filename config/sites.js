@@ -51,11 +51,11 @@ module.exports = {
       // distribution: 'uniform'
     },
     status: {
-      start_date: '2025-04-30',
+      start_date: '2025-04-23',
       end_date: '2025-07-01'
     },
     run: {
-      start_date: '2025-04-30',
+      start_date: '2025-04-23',
       end_date: '2025-07-01'
     },
     leaderboard: {
@@ -65,8 +65,8 @@ module.exports = {
   },
   PLY: {
     window: {
-      start_date: '2025-04-15',
-      end_date: '2025-07-01',
+      start_date: '2025-04-16',
+      end_date: '2025-05-28',
       method: 'fixed'
     },
     times: {
@@ -74,9 +74,9 @@ module.exports = {
       end_hour: 24
     },
     sampler: {
-      //distribution: 'uniform'
-      distribution: 'exponential',
-      lambda: 0.0005
+      distribution: 'uniform'
+      //distribution: 'exponential',
+      //lambda: 0.0005
     },
     counts: {
       min_count_n: 0,
@@ -84,12 +84,12 @@ module.exports = {
       min_count_mean: 0
     },
     status: {
-      start_date: '2025-04-15',
-      end_date: '2025-07-01'
+      start_date: '2025-04-16',
+      end_date: '2025-05-28'
     },
     run: {
-      start_date: '2025-04-15',
-      end_date: '2025-07-01',
+      start_date: '2025-04-16',
+      end_date: '2025-05-18',
       fullDay: true
     }
   },
