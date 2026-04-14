@@ -6,8 +6,8 @@ library(jsonlite)
 library(glue)
 
 LOCATION_ID <- "UML"
-START_DATE <- "2024-04-01"
-END_DATE <- "2024-07-01"
+START_DATE <- "2025-04-01"
+END_DATE <- "2025-08-01"
 
 cfg <- read_json("./config.json")
 
@@ -26,7 +26,7 @@ df_email <- read_delim("~/herring_emails.csv", col_names = c("uid", "email"), de
 # load: leaderboard -------------------------------------------------------
 
 con <- DBI::dbConnect(
-  RPostgreSQL::PostgreSQL(),
+  RPostgres::Postgres(),
   dbname = cfg$db$database,
   host = cfg$db$host,
   port = cfg$db$port,
