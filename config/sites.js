@@ -65,7 +65,7 @@ module.exports = {
   },
   PLY: {
     window: {
-      start_date: '2026-04-14',
+      start_date: '2026-04-10',
       end_date: '2026-07-01',
       method: 'fixed'
     },
@@ -84,11 +84,11 @@ module.exports = {
       min_count_mean: 0
     },
     status: {
-      start_date: '2026-04-14',
+      start_date: '2026-04-10',
       end_date: '2026-07-01'
     },
     run: {
-      start_date: '2026-04-14',
+      start_date: '2026-04-10',
       end_date: '2026-07-01',
       fullDay: true
     }
