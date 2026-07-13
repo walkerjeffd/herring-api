@@ -46,9 +46,9 @@ module.exports = {
       min_count_mean: 0
     },
     sampler: {
-      distribution: 'exponential',
-      lambda: 0.0005
-      // distribution: 'uniform'
+      //distribution: 'exponential',
+      //lambda: 0.0005
+      distribution: 'uniform'
     },
     status: {
       start_date: '2026-04-15',
@@ -66,7 +66,7 @@ module.exports = {
   PLY: {
     window: {
       start_date: '2026-04-10',
-      end_date: '2026-07-01',
+      end_date: '2026-05-24',
       method: 'fixed'
     },
     times: {
@@ -74,9 +74,9 @@ module.exports = {
       end_hour: 24
     },
     sampler: {
-      //distribution: 'uniform'
-      distribution: 'exponential',
-      lambda: 0.0005
+      distribution: 'uniform'
+      //distribution: 'exponential',
+      //lambda: 0.0005
     },
     counts: {
       min_count_n: 0,
@@ -85,11 +85,11 @@ module.exports = {
     },
     status: {
       start_date: '2026-04-10',
-      end_date: '2026-07-01'
+      end_date: '2026-05-24'
     },
     run: {
       start_date: '2026-04-10',
-      end_date: '2026-07-01',
+      end_date: '2026-05-24',
       fullDay: true
     }
   },
