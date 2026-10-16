@@ -129,9 +129,11 @@ app.post('/count/', (req, res, next) => {
 app.get('/users/', (req, res, next) => {
   const locationId = req.query.location_id || 'UML'
 
+  const siteParams = utils.getSiteParams(locationId)
   const defaultQuery = {
     location_id: locationId,
-    ...utils.getSiteParams(locationId).leaderboard
+    video_year: siteParams.video_year,
+    ...siteParams.leaderboard
   }
 
   const query = Object.assign(defaultQuery, req.query)
@@ -144,10 +146,12 @@ app.get('/users/', (req, res, next) => {
 app.get('/users/:uid', (req, res, next) => {
   const locationId = req.query.location_id || 'UML'
 
+  const siteParams = utils.getSiteParams(locationId)
   const defaultQuery = {
     location_id: locationId,
     uid: req.params.uid,
-    ...utils.getSiteParams(locationId).leaderboard
+    video_year: siteParams.video_year,
+    ...siteParams.leaderboard
   }
   const query = Object.assign(defaultQuery, req.query)
 

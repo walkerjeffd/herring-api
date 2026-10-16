@@ -28,7 +28,9 @@ module.exports = {
     run: {
       start_date: '2022-04-01',
       end_date: '2022-07-01'
-    }
+    },
+    // year the videos were recorded, used to filter the leaderboard (null = all years)
+    video_year: null
   },
   UML: {
     window: {
@@ -61,7 +63,8 @@ module.exports = {
     leaderboard: {
       start_date: '2026-01-01',
       end_date: '2026-12-31'
-    }
+    },
+    video_year: 2026
   },
   PLY: {
     window: {
@@ -91,7 +94,8 @@ module.exports = {
       start_date: '2026-04-10',
       end_date: '2026-05-24',
       fullDay: true
-    }
+    },
+    video_year: 2026
   },
   NSRWA: {
     window: {
@@ -114,7 +118,8 @@ module.exports = {
     run: {
       start_date: '2022-04-25',
       end_date: '2022-05-23'
-    }
+    },
+    video_year: 2022
   },
   PEN: {
     window: {
@@ -147,6 +152,7 @@ module.exports = {
     leaderboard: {
       start_date: '2023-01-01',
       end_date: '2023-12-31'
-    }
+    },
+    video_year: 2023
   }
 }

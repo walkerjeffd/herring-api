@@ -428,8 +428,11 @@ AS $$
   ORDER BY d.date
 $$ LANGUAGE SQL;
 
--- users stats and rank for given location, video start/end dates
-CREATE OR REPLACE FUNCTION f_users_stats(_location_id text, _start_date text, _end_date text)
+-- users stats and rank for given location, count submission start/end dates,
+-- and year the video was recorded (NULL = all years)
+-- drop the old 3-argument version, otherwise it stays in the database as a separate overload
+DROP FUNCTION IF EXISTS f_users_stats(text, text, text);
+CREATE OR REPLACE FUNCTION f_users_stats(_location_id text, _start_date text, _end_date text, _video_year int)
 RETURNS TABLE (
   uid TEXT,
   username TEXT,
@@ -449,8 +452,9 @@ AS $$
     WHERE NOT counts.flagged
     AND NOT videos.flagged
     AND videos.location_id = _location_id
-    AND (videos.start_timestamp AT TIME ZONE 'US/Eastern')::DATE >= _start_date::DATE
-    AND (videos.end_timestamp AT TIME ZONE 'US/Eastern')::DATE <= _end_date::DATE
+    AND (counts.created_at AT TIME ZONE 'US/Eastern')::DATE >= _start_date::DATE
+    AND (counts.created_at AT TIME ZONE 'US/Eastern')::DATE <= _end_date::DATE
+    AND (_video_year IS NULL OR date_part('year', videos.start_timestamp AT TIME ZONE 'US/Eastern') = _video_year)
     AND counts.users_uid IS NOT NULL
     GROUP BY counts.users_uid
   ),
